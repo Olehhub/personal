@@ -25,9 +25,17 @@
     <header>
       <div class="container site-bar">
         <a href="#top" class="logo" aria-label="На головну">
-          <img width="80" src="./images/logo.png" alt="Логотип" />
-          <span>Для моєї коханої</span>
+          <svg class="icon">
+            <use href="images/sprite.svg#icon-logo"></use>
+          </svg>
+          <span class="site-title">Для моєї коханої</span>
         </a>
+        <!-- КНОПКА МЕНЮ -->
+    <button class="menu-toggle" aria-label="Відкрити меню">
+      <svg class="icon">
+        <use href="./images/sprite.svg#icon-surprise"></use>
+      </svg>
+    </button>
         <nav aria-label="Основна навігація">
           <ul>
             <li><a href="#moments">Щасливі моменти</a></li>
@@ -41,8 +49,15 @@
     </header>
 
     <main id="main">
-      <!-- 1. ЩАСЛИВІ МОМЕНТИ -->
-      <section id="moments" aria-labelledby="moments-title">
+      <!-- 1. HERO -->
+      <section id="why-love" class="hero" aria-label="За що я тебе кохаю">
+        <div class="hero-inner">
+          <h2>За що я тебе кохаю</h2>
+          <a class="btn" href="#why-love">Дізнатися</a>
+        </div>
+      </section>
+      <!-- 2. ЩАСЛИВІ МОМЕНТИ -->
+      <section id="moments" class="moments" aria-labelledby="moments-title">
         <div class="container">
           <h2 id="moments-title">Щасливі моменти разом</h2>
           <ul class="cards">
@@ -77,14 +92,6 @@
               </div>
             </li>
           </ul>
-        </div>
-      </section>
-
-      <!-- 2. HERO -->
-      <section id="why-love" class="hero" aria-label="За що я тебе кохаю">
-        <div class="hero-inner">
-          <h2>За що я тебе кохаю</h2>
-          <a class="btn" href="#why-love">Дізнатися</a>
         </div>
       </section>
 
@@ -233,32 +240,20 @@
             </ul>
           </div>
 
-          <!-- Подорож разом -->
-          <div class="gift-group" aria-labelledby="gift-trip">
-            <h3 id="gift-trip">Подорож разом</h3>
-            <ul class="cards">
-              <li class="card">
-                <div class="card-body">
-                  <img width="264" src="./images/travel.png" alt="Карпати" />
-                  <p class="card-title">Подорож в Карпати</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
           <!-- Сюрприз -->
-          <div class="gift-group" aria-labelledby="gift-surprise">
-            <h3 id="gift-surprise">Сюрприз (на мій вибір)</h3>
-            <a class="btn" href="#">Сюрприз</a>
+          <div class="gift-surprise-container" aria-labelledby="gift-surprise">
+            <a class="btn-gift" href="#"><span>Сюрприз</span></a>
           </div>
-        </div>
+        
       </section>
     </main>
 
     <footer>
       <div class="container site-bar">
         <a href="#top" class="logo" aria-label="На головну">
-          <img width="80" src="./images/logo.png" alt="Логотип" />
+          <svg class="icon">
+            <use href="images/sprite.svg#icon-logo"></use>
+          </svg>
           <span>Наша Історія</span>
         </a>
         <nav aria-label="Основна навігація">
@@ -272,5 +267,6 @@
         </nav>
       </div>
     </footer>
+    <script src="js/moves.js" defer></script>
   </body>
 </html>

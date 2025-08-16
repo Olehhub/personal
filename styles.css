@@ -11,10 +11,35 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  color: #f7c5cc;
+  color: #2d2d2d;
   line-height: 1.5;
   background: url("./images/bg.jpg") no-repeat center center fixed;
   background-size: cover;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Кнопка меню */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+}
+/* Ховаємо меню за замовчуванням (мобільна версія) */
+nav ul {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+/* Коли є клас .active — показуємо */
+nav.active ul {
+  display: flex;
 }
 
 /* ====== КОНТЕЙНЕР ====== */
@@ -27,48 +52,90 @@ body {
 /* ====== ХЕДЕР І ФУТЕР ====== */
 header,
 footer {
-  background: #cc313d;
+  background: #ffd3e0;
   padding: 1rem 0;
 }
 
 .site-bar {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between; /* логотип ліворуч, кнопка праворуч */
+  position: relative;
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #f7c5cc;
+  color: #ffb085;
   text-decoration: none;
   font-weight: bold;
 }
 
+.site-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap; /* текст не переноситься */
+  color: #ffb085;
+  font-weight: bold;
+}
+
+.menu-toggle {
+  position: fixed; /* фіксуємо кнопку на екрані */
+  top: 20px; /* відступ від верхнього краю екрану */
+  right: 20px; /* відступ від правого краю екрану */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 999; /* щоб кнопка була поверх усіх елементів */
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* напівпрозоре затемнення */
+  display: none; /* приховано за замовчуванням */
+  flex-direction: column;
+  justify-content: center; /* центр по вертикалі */
+  align-items: center; /* центр по горизонталі */
+  z-index: 1000; /* поверх всього */
+  opacity: 0;
+  pointer-events: none; /* не клікабельне поки закрите */
+}
+
+/* Коли активне */
+nav.active {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto; /* робимо клікабельним при відкритті */
+}
+
 nav ul {
-  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.5rem;
+  text-align: center;
+  list-style: none;
 }
 
 nav a {
-  color: #f7c5cc;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 1.5rem;
+  color: #618585;
 }
 
 nav a:hover {
-  color: #f7c5cc;
+  color: #ff9966;
 }
 
 /* ====== РОЗДІЛИ ====== */
 section {
   padding: 2rem 0;
-  background: #cc313d;
+  background: #ffd3e0;
   border-radius: 1rem;
   margin-bottom: 2rem;
 }
@@ -77,7 +144,7 @@ h2,
 h3 {
   text-align: center;
   margin-bottom: 1rem;
-  color: #f7c5cc;
+  color: #ffb085;
 }
 
 .cards {
@@ -86,7 +153,7 @@ h3 {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.1);
+  background: #ffffff;
   border-radius: 1rem;
   overflow: hidden;
   text-align: center;
@@ -107,27 +174,40 @@ h3 {
 .card-title {
   padding: 0.5rem;
   font-size: 1rem;
-  color: #f7c5cc;
+  color: #ff9966;
 }
 
 /* ====== HERO ====== */
 .hero {
   position: relative;
-  min-height: 300px;
-  background: url("./images/hero.jpg") no-repeat center/cover;
+  min-height: 350px;
+  background: url("./images/logo.png") no-repeat center/cover;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  border-radius: 1rem;
+  border-radius: 15%;
 }
 
 .hero-inner {
-  background: #cc313d;
-  padding: 2rem;
+  background: rgba(3, 0, 0, 0.7);
+  padding: 10px;
+  text-align: center;
+  margin-bottom: -5rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+/* ====== MOMENTS ====== */
+.moments {
+  margin-top: 5rem;
+}
+/* ====== GIFT-SURPRISE ====== */
+.gift-surprise-container {
+  background: #ffd3e0;
   border-radius: 1rem;
   text-align: center;
+  margin-top: 40px;
+  padding: 20px;
 }
-
 /* ====== КНОПКИ ====== */
 .btn {
   display: inline-block;
@@ -144,6 +224,44 @@ h3 {
   transition: all 0.3s ease;
 }
 
+.btn-gift {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background-image: url("./images/gift-box.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 2rem;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(224, 9, 19, 0.796);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Напівпрозорий шар для кращої читабельності тексту */
+.btn-gift::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 2rem;
+  z-index: 0;
+}
+
+/* Текст поверх шару */
+.btn-gift span {
+  position: relative;
+  z-index: 1;
+}
+
 .btn:hover {
   background: #2f3c7e;
   transform: scale(1.05);
@@ -151,6 +269,18 @@ h3 {
 }
 
 .btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(255, 20, 147, 0.3);
+}
+
+/* Ефект при наведенні */
+.btn-gift:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(201, 196, 196, 0.9);
+}
+
+/* Ефект при натисканні */
+.btn-gift:active {
   transform: scale(0.95);
   box-shadow: 0 2px 10px rgba(255, 20, 147, 0.3);
 }
