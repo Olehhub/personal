@@ -22,7 +22,7 @@ menuToggle.addEventListener("click", () => {
     heart.style.animationDuration = `${1.8 + Math.random() * 1.7}s`;
 
     // Випадкове масштабування
-    heart.style.transform = `scale(${0.5 + Math.random() * 0.5})`;
+    heart.style.transform = `scale(${1.5 + Math.random() * 0.5})`;
 
     // Випадкове горизонтальне коливання
     heart.style.setProperty("--rand", Math.random());

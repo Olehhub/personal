@@ -284,6 +284,7 @@ footer {
   animation-name: fallHeart;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
+  z-index: 2000;
 }
 
 @keyframes fallHeart {
